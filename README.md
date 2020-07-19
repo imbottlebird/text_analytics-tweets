@@ -4,14 +4,14 @@ Classifier for Trump's tweets to determine whether they are written by Trump him
 <img src='img/trump_t.png' align='middle'>
 
 ### Structure:
-The process of this analysis is constructed into 3 main parts.
+The analysis has 3 main components.
 1) <b>Importing raw data:</b> Imports unstructured text in "raw" form directly from an online source. 
 2) <b>Preprocessing:</b> Transforms the raw data into a structured dataset amenable for analysis; a dependent variable and independent variables.
-3) <b>Modeling:</b> Build predictive models using the transformed dataset
+3) <b>Modeling:</b> Builds predictive models using the transformed dataset.
 
-The first component is included in the file <a href="data_import.R" target="_blank">data_import.R</a> and the second and third ones in <a href="tweets_analysis.R" target="_blank">tweets_analysis.R</a>.
+The codes for 'Importing raw data' is included in <a href="data_import.R" target="_blank">data_import.R</a>. The second and third components are in <a href="tweets_analysis.R" target="_blank">tweets_analysis.R</a>.
 
-In this page, I described the analytical processes into smaller subsets as below.
+In this page, the analytical processeses are described in smaller subsets as below.
 
 1. Data Importation and Statistics
 2. Text Preprocessing
@@ -635,9 +635,9 @@ As shown below, we can see 'positive', 'negative', 'joy', 'trust' are sentiment 
   </tr>
 </table>
 <br>
+<img src='img/sentiment_summary.png' width='400' align='middle'>
 
-
-## Conclusion
+## Recap
 
 Basic procedural steps for text analytics: bag of words
 * Raw data: Transform unstructured text into structured, amenable data form
