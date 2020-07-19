@@ -45,9 +45,13 @@ tweets <- all_tweets %>%
   filter(source %in% c("Twitter for iPhone", "Twitter for Android")) %>%
   mutate(source = ifelse(source=="Twitter for iPhone", "iPhone", source)) %>%
   mutate(source = ifelse(source=="Twitter for Android", "Android", source))
+
+### Restriction to the period of interest
+tweets <- tweets %>%
+  filter(created_at < "2017-03-01" & created_at > "2015-06-01")
 ```
 
-#### Filtered dataset
+#### Filtered dataset (n=7,114)
 <img src='img/tweets.png' width='400' align='middle'>
 
 
