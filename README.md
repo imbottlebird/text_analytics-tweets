@@ -93,12 +93,12 @@ tweets %>%
 ```
 
 #### Number of quoted tweets
-<img src='img/quoted.png' width='400' align='middle'>
+<img src='img/quoted.png' width='300' align='middle'>
 
 </br>
 
 #### Word frequencies used on Andriod vs. iPhone. <br/>
-<img src='img/word_ratio.png' width='400' align='middle'>
+<img src='img/word_ratio.png' width='450' align='middle'>
 
 <br>
 

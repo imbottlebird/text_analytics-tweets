@@ -163,6 +163,7 @@ print(ggplot() +
         geom_line(data=ROC.logreg.df,aes(x=fpr,y=tpr,colour="a"),lwd=1,lty=1) +
         geom_line(data=ROC.cart.df,aes(x=fpr,y=tpr,colour="b"),lwd=1,lty=2) +
         geom_line(data=ROC.RF.df,aes(x=fpr,y=tpr,colour="c"),lwd=1,lty=3) +
+        geom_line(data=ROC.RF.df,aes(x=fpr,y=tpr,colour="c"),lwd=1,lty=3) +
         xlab("False Positive Rate") +
         ylab("True Positive Rate") +
         theme_bw() +
@@ -411,3 +412,25 @@ FPR.metadata.sentiment.RF = (matrix.metadata.sentiment.RF[1,2])/sum(matrix.metad
 ROC.metadata.sentiment.RF<- prediction(predict(rfmodel.metadata.sentiment,newdata=test,type="prob")[,2], test$TrumpWrote)
 ROC.metadata.sentiment.RF.df <- data.frame(fpr=slot(performance(ROC.metadata.sentiment.RF, "tpr", "fpr"),"x.values")[[1]],tpr=slot(performance(ROC.metadata.sentiment.RF, "tpr", "fpr"),"y.values")[[1]])
 AUC.metadata.sentiment.RF <- as.numeric(performance(ROC.metadata.sentiment.RF, "auc")@y.values)
+
+### Summary
+
+summary.performance.metadata.sentiment <- data.frame (
+  accuracy=round(c(accuracy.baseline,accuracy.metadata.sentiment.logreg,accuracy.metadata.sentiment.cart,accuracy.metadata.sentiment.RF),3),
+  TPR=round(c(TPR.baseline,TPR.metadata.sentiment.logreg,TPR.metadata.sentiment.cart,TPR.metadata.sentiment.RF),3),
+  FPR=round(c(FPR.baseline,FPR.metadata.sentiment.logreg,FPR.metadata.sentiment.cart,FPR.metadata.sentiment.RF),3),
+  AUC=round(c(AUC.baseline,AUC.metadata.sentiment.logreg,AUC.metadata.sentiment.cart,AUC.metadata.sentiment.RF),3)
+)
+
+
+print(ggplot() +
+        geom_line(data=ROC.metadata.sentiment.logreg.df,aes(x=fpr,y=tpr,colour="a"),lwd=1,lty=1) +
+        geom_line(data=ROC.metadata.sentiment.cart.df,aes(x=fpr,y=tpr,colour="b"),lwd=1,lty=2) +
+        geom_line(data=ROC.metadata.sentiment.RF.df,aes(x=fpr,y=tpr,colour="c"),lwd=1,lty=3) +
+        xlab("False Positive Rate") +
+        ylab("True Positive Rate") +
+        theme_bw() +
+        xlim(0, 1) +
+        ylim(0, 1) +
+        scale_color_manual(name="Method", labels=c("a"="Logistic regression", "b"="CART", "c"="Random forest"), values=c("a"="gray", "b"="blue", "c"="red")) +
+        theme(axis.title=element_text(size=18), axis.text=element_text(size=18), legend.text=element_text(size=18), legend.title=element_text(size=18)))
