@@ -1,6 +1,8 @@
 # Turning Tweets into Knowledge
 Classifier for Trump's tweets to determine whether they are written by Trump himself or his staff.
 
+<img src='img/trump_t.png' align='middle'>
+
 ### Structure:
 The process of this analysis is constructed into 3 main parts.
 1) <b>Importing raw data:</b> Imports unstructured text in "raw" form directly from an online source. 
@@ -16,7 +18,7 @@ In this page, I described the analytical processes into smaller subsets as below
 3. Training and Testing
 4. Prediction
 5. Prediction + Metadata
-6. Prediction + Sentiment Analysis
+6. Prediction + Metadata + Sentiment Analysis
 <br/><br/>
 
 
@@ -485,7 +487,7 @@ We can extract sentiment information from the tweet. Below are some examples tha
   </tr>
 </table>
 
-To do this, we need to the sentiment mapping that lists the words and corresponding sentiments. Here I used the NRC Word-Emotion Association lexicon from https://saifmohammad.com/WebPages/lexicons.html. It is available from tidytext in R.
+To do this, we need to the sentiment mapping that lists the words and corresponding sentiments. Here I used the NRC Word-Emotion Association lexicon from https://saifmohammad.com/WebPages/lexicons.html. Use "Non-commercial Research Use" option.
 
 #### Sentiment mapping
 <img src='img/sentiment_map.png' width='200' align='middle'>
