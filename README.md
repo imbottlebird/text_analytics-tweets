@@ -11,19 +11,19 @@ The analysis has 3 main components.
 
 The codes for 'Importing raw data' is included in <a href="data_import.R" target="_blank">data_import.R</a>. The second and third components are in <a href="tweets_analysis.R" target="_blank">tweets_analysis.R</a>.
 
-In this page, the analytical processeses are described in smaller subsets as below.
+In this page, the analytical processes are described in smaller subsets as below.
 
 1. Data Importation and Statistics
 2. Text Preprocessing
 3. Training and Testing
 4. Prediction
-5. Prediction + Metadata
-6. Prediction + Metadata + Sentiment Analysis
+5. Prediction (+ Metadata)
+6. Prediction (+ Metadata & Sentiment Analysis)
 <br/><br/>
 
 
 ## 1. Data Importation and Statistics
-The dataset containings tweets and their metadata from the Trump's twitter account is imported from an online archive at <a href="http://www.trumptwitterarchive.com">http://www.trumptwitterarchive.com</a>.
+The dataset containing tweets and their metadata from the Trump's twitter account is imported from an online archive at <a href="http://www.trumptwitterarchive.com">http://www.trumptwitterarchive.com</a>.
 ```bash
 ### Data importation
 url <- 'http://www.trumptwitterarchive.com/data/realdonaldtrump/%s.json'
@@ -205,12 +205,10 @@ AUC.baseline = .5
 </table>
 <br>
 
-#### Logistic regression
+#### Logistic Regression
 
 
 ```bash
-##### BAG OF WORDS
-
 ### Logistic regression
 
 logreg = glm(TrumpWrote ~., data=train, family="binomial")
@@ -380,7 +378,7 @@ AUC.RF <- as.numeric(performance(ROC.RF, "auc")@y.values)
 
 
 
-## 5. Prediction + Metadata
+## 5. Prediction (+ Metadata)
 The prediction accuracy can be improved by adding metadata of tweets. 
 1. <b>Picture/video/link:</b> The importance of 'http' as a word was shown in the constructed CART tree above. We can create a variable that indicates whether the tweet has a picture/video/link
 2. <b>Hour of the day:</b> Trump and his staff tweet in different hours of the day. We can create a variable for the hour of the day the tweet was create.
@@ -470,7 +468,7 @@ We can see the importance of Metadata variables from the constructed CART tree a
 </table>
 <br>
 
-## 6. Prediction + Sentiment Analysis
+## 6. Prediction (+ Metadata & Sentiment Analysis)
 
 We can extract sentiment information from the tweet. Below are some examples that show the sentiments extracted from the uploaded tweets.
 <table>
@@ -491,13 +489,13 @@ We can extract sentiment information from the tweet. Below are some examples tha
   </tr>
 </table>
 
-To do this, we need to the sentiment mapping that lists the words and corresponding sentiments. Here I used the NRC Word-Emotion Association lexicon from https://saifmohammad.com/WebPages/lexicons.html. Use "Non-commercial Research Use" option.
+To do this, we need the sentiment mapping that lists the words and corresponding sentiments. Here I used the NRC Word-Emotion Association lexicon from https://saifmohammad.com/WebPages/lexicons.html. Use "Non-commercial Research Use" option.
 
 #### Sentiment mapping
 <img src='img/sentiment_map.png' width='200' align='middle'>
 
 ### Import Sentiment Map
-The sentiment map from NRC Word-Emotion Association lexicon provides mapping of total 6,468 words to 10 types of correspoding sentiments:
+The sentiment map from NRC Word-Emotion Association lexicon provides mapping of total 6,468 words to 10 correspoding sentiments:
 * anger, anticipation, disgust, fear, joy, negative, positive, sadness, surprise, trust
 
  We then index the map into 0 or 1 to make it amenable to train and test.
