@@ -408,7 +408,7 @@ tweets.trump = tweets.trump %>%
 ```
 
 #### CART Tree
-<img src='img/cart_meta.png' width='400' align='middle'>
+<img src='img/cart_meta.png' width='500' align='middle'>
 
 We can see the importance of Metadata variables from the constructed CART tree above.
 
@@ -577,7 +577,7 @@ Before moving on to the training and testing stage, we have to join the sentimen
 
 As shown below, we can see 'positive', 'negative', 'joy', 'trust' are sentiment information that have important influence on the outcome.
 
-<img src='img/sentiment_cart.png' width='400' align='middle'>
+<img src='img/sentiment_cart.png' width='500' align='middle'>
 
 
 <table>
